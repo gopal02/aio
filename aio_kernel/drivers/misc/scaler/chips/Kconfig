@@ -1,0 +1,50 @@
+menuconfig SCALER_AUTO_I2C
+	bool "Support auto scaler with I2C"
+	default n	
+	
+if SCALER_AUTO_I2C
+
+config SCALER_DP703
+bool "scaler dp703"
+	default n
+
+choice
+depends on SCALER_DP703
+prompt  "firmware update type"
+
+config SCALER_DP703_FIRMWARE_NULL
+bool "NULL"
+	
+config SCALER_DP703_FIRMWARE_SPI
+bool "scaler dp703 firmware update with spi bus"
+depends on SPIM_RK29
+
+config SCALER_DP703_FIRMWARE_I2C
+bool "scaler dp703 firmware update with i2c bus"
+
+endchoice
+ 
+config SCALER_TV5735
+	bool "scaler tv5735"
+	default n	
+
+config SCALER_TV5930
+	bool "scaler tv5930"
+	default n
+	
+endif
+
+config SCALER_AUTO_SPI
+	bool "Support auto scaler with SPI"
+	depends on SPI_MASTER
+
+if SCALER_AUTO_SPI
+	
+endif
+
+config SCALER_AUTO_UART
+	bool "Support auto scaler with UART"
+	
+if SCALER_AUTO_UART
+	
+endif

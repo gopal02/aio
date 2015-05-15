@@ -1,0 +1,14 @@
+#
+# all auto scaler drivers configuration
+#
+
+menuconfig SCALER_AUTO
+	bool "auto scaler driver support"
+	default n	
+
+if SCALER_AUTO
+
+source "drivers/misc/scaler/chips/Kconfig"
+
+endif
+
